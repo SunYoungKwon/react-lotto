@@ -35,10 +35,14 @@ class App extends Component {
     return [...numberList].sort((a, b) => a - b);
   }
 
-  createLottoList(count) {
-    const lottoList = [...Array(count)].map(this.createLotto);
+  createLottoList(count = 0) {
+    try {
+      const lottoList = [...Array(count)].map(this.createLotto);
 
-    this.setState({ lottoList });
+      this.setState({ lottoList });
+    } catch (e) {
+      this.setState({ lottoList: [] });
+    }
   }
 
   setWinningNumber(winningNumber) {
